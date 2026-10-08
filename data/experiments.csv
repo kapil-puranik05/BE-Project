@@ -1,0 +1,4 @@
+experiment_id,algorithm,data_distribution,final_accuracy,total_training_time,communication_mb,stragglers
+EXP001,FedAvg,IID,89.2,120,41.5,0
+EXP002,FedAvg,Non-IID,82.4,147,45.3,2
+EXP003,FedProx,Non-IID,86.7,138,43.1,1
