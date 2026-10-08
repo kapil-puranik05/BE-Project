@@ -1,0 +1,4 @@
+Run the following:
+!pip install requirements.txt
+source venv/bin/activate
+python simulation.py
