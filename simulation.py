@@ -1,5 +1,4 @@
 import os
-
 import numpy as np
 import pandas as pd
 
@@ -15,20 +14,41 @@ ANOMALY_ROUNDS = [6, 7]
 STRAGGLER = "C3"
 
 BASELINE = {
-    "C1": {"cpu_usage": 62, "memory_usage": 65, "network_bandwidth": 8.2, "training_time": 17.3, "local_loss": 0.42, "local_accuracy": 84.1},
-    "C2": {"cpu_usage": 71, "memory_usage": 68, "network_bandwidth": 7.8, "training_time": 18.1, "local_loss": 0.39, "local_accuracy": 85.2},
-    "C3": {"cpu_usage": 91, "memory_usage": 89, "network_bandwidth": 2.1, "training_time": 41.5, "local_loss": 0.61, "local_accuracy": 78.3},
-    "C4": {"cpu_usage": 55, "memory_usage": 62, "network_bandwidth": 9.1, "training_time": 16.2, "local_loss": 0.40, "local_accuracy": 84.7},
-    "C5": {"cpu_usage": 68, "memory_usage": 70, "network_bandwidth": 8.5, "training_time": 19.0, "local_loss": 0.43, "local_accuracy": 83.8},
+    "C1": {"cpu_usage": 62.0, "memory_usage": 65.0, "network_bandwidth": 8.2, "training_time": 17.3, "local_loss": 0.42, "local_accuracy": 84.1},
+    "C2": {"cpu_usage": 71.0, "memory_usage": 68.0, "network_bandwidth": 7.8, "training_time": 18.1, "local_loss": 0.39, "local_accuracy": 85.2},
+    "C3": {"cpu_usage": 64.0, "memory_usage": 66.0, "network_bandwidth": 8.0, "training_time": 17.6, "local_loss": 0.41, "local_accuracy": 84.3},
+    "C4": {"cpu_usage": 55.0, "memory_usage": 62.0, "network_bandwidth": 9.1, "training_time": 16.2, "local_loss": 0.40, "local_accuracy": 84.7},
+    "C5": {"cpu_usage": 68.0, "memory_usage": 70.0, "network_bandwidth": 8.5, "training_time": 19.0, "local_loss": 0.43, "local_accuracy": 83.8},
 }
 
-ANOMALY = {
-    "cpu_usage": 94,
-    "memory_usage": 91,
+# Round 6: Degradation onset for C3
+DEGRADATION_R6 = {
+    "cpu_usage": 80.0,
+    "memory_usage": 78.5,
+    "network_bandwidth": 4.5,
+    "training_time": 28.0,
+    "local_loss": 0.52,
+    "local_accuracy": 80.5,
+}
+
+# Round 7: Peak straggler anomaly for C3
+ANOMALY_R7 = {
+    "cpu_usage": 94.0,
+    "memory_usage": 91.0,
     "network_bandwidth": 1.7,
     "training_time": 43.0,
     "local_loss": 0.74,
     "local_accuracy": 70.9,
+}
+
+# Round 8: Intermediate recovery for C3
+RECOVERY_R8 = {
+    "cpu_usage": 69.0,
+    "memory_usage": 68.0,
+    "network_bandwidth": 7.6,
+    "training_time": 19.8,
+    "local_loss": 0.43,
+    "local_accuracy": 84.0,
 }
 
 GLOBAL_ACCURACY = [72.3, 75.1, 77.8, 79.9, 82.1, 83.4, 80.8, 84.0, 85.2, 86.4]
@@ -46,27 +66,62 @@ EXPERIMENTS = [
 def simulate_clients(rng):
     rows = []
     for r in range(1, NUM_ROUNDS + 1):
+        progress = (r - 1) / (NUM_ROUNDS - 1)
         for cid in NUM_CLIENTS:
-            base = BASELINE[cid]
-            is_anomaly = cid == STRAGGLER and r in ANOMALY_ROUNDS
-            src = ANOMALY if is_anomaly else base
-            progress = (r - 1) / (NUM_ROUNDS - 1)
             jitter = rng.normal(0, 1)
-            if is_anomaly:
-                cpu = src["cpu_usage"]
-                mem = src["memory_usage"]
-                bw = src["network_bandwidth"]
-                tt = src["training_time"]
-                loss = src["local_loss"] + abs(rng.normal(0, 0.01))
-                acc = src["local_accuracy"] - abs(rng.normal(0, 0.3))
+            
+            if cid == STRAGGLER:
+                if r == 6:
+                    # Round 6: Degradation begins
+                    src = DEGRADATION_R6
+                    cpu = np.clip(src["cpu_usage"] + jitter * 1.5, 5, 100)
+                    mem = np.clip(src["memory_usage"] + jitter * 1.5, 5, 100)
+                    bw = max(0.5, src["network_bandwidth"] + rng.normal(0, 0.2))
+                    tt = src["training_time"] * (1 + rng.normal(0, 0.03))
+                    loss = src["local_loss"] + abs(rng.normal(0, 0.01))
+                    acc = src["local_accuracy"] - abs(rng.normal(0, 0.2))
+                    status = "healthy"
+                elif r == 7:
+                    # Round 7: Peak anomaly / straggler state
+                    src = ANOMALY_R7
+                    cpu = np.clip(src["cpu_usage"] + jitter * 0.5, 5, 100)
+                    mem = np.clip(src["memory_usage"] + jitter * 0.5, 5, 100)
+                    bw = max(0.5, src["network_bandwidth"] + rng.normal(0, 0.1))
+                    tt = src["training_time"] * (1 + rng.normal(0, 0.02))
+                    loss = src["local_loss"] + abs(rng.normal(0, 0.01))
+                    acc = src["local_accuracy"] - abs(rng.normal(0, 0.2))
+                    status = "straggler"
+                elif r == 8:
+                    # Round 8: Recovery begins
+                    src = RECOVERY_R8
+                    cpu = np.clip(src["cpu_usage"] + jitter * 1.5, 5, 100)
+                    mem = np.clip(src["memory_usage"] + jitter * 1.5, 5, 100)
+                    bw = max(0.5, src["network_bandwidth"] + rng.normal(0, 0.2))
+                    tt = src["training_time"] * (1 + rng.normal(0, 0.03))
+                    loss = src["local_loss"] - 0.01 + rng.normal(0, 0.01)
+                    acc = src["local_accuracy"] + 0.5 + rng.normal(0, 0.3)
+                    status = "healthy"
+                else:
+                    # Rounds 1-5 & 9-10: Normal baseline progression
+                    base = BASELINE[cid]
+                    cpu = np.clip(base["cpu_usage"] + jitter * 2.0, 5, 100)
+                    mem = np.clip(base["memory_usage"] + jitter * 1.8, 5, 100)
+                    bw = max(0.5, base["network_bandwidth"] + rng.normal(0, 0.3))
+                    tt = base["training_time"] * (1 + rng.normal(0, 0.04))
+                    loss = max(0.05, base["local_loss"] - 0.02 * progress + rng.normal(0, 0.01))
+                    acc = min(99.0, base["local_accuracy"] + 2.5 * progress + rng.normal(0, 0.4))
+                    status = "healthy"
             else:
-                cpu = np.clip(src["cpu_usage"] + jitter * 2.5, 5, 100)
-                mem = np.clip(src["memory_usage"] + jitter * 2.0, 5, 100)
-                bw = max(0.5, src["network_bandwidth"] + rng.normal(0, 0.3))
-                tt = src["training_time"] * (1 + rng.normal(0, 0.05))
-                loss = max(0.05, src["local_loss"] - 0.02 * progress + rng.normal(0, 0.01))
-                acc = min(99.0, src["local_accuracy"] + 2.5 * progress + rng.normal(0, 0.4))
-            status = "straggler" if cid == STRAGGLER else "healthy"
+                # Other clients: normal baseline progression throughout
+                base = BASELINE[cid]
+                cpu = np.clip(base["cpu_usage"] + jitter * 2.5, 5, 100)
+                mem = np.clip(base["memory_usage"] + jitter * 2.0, 5, 100)
+                bw = max(0.5, base["network_bandwidth"] + rng.normal(0, 0.3))
+                tt = base["training_time"] * (1 + rng.normal(0, 0.05))
+                loss = max(0.05, base["local_loss"] - 0.02 * progress + rng.normal(0, 0.01))
+                acc = min(99.0, base["local_accuracy"] + 2.5 * progress + rng.normal(0, 0.4))
+                status = "healthy"
+                
             rows.append({
                 "client_id": cid,
                 "round": r,
@@ -113,7 +168,7 @@ def main():
     print(f"Algorithm  : {ALGORITHM}")
     print(f"Clients    : {len(NUM_CLIENTS)}")
     print(f"Rounds     : {NUM_ROUNDS}")
-    print(f"Anomaly    : {STRAGGLER} in rounds {ANOMALY_ROUNDS}")
+    print(f"Anomaly    : {STRAGGLER} peak in round 7 (onset in round 6)")
     print(f"Wrote {len(clients)} rows -> data/clients.csv")
     print(f"Wrote {len(rounds)} rows -> data/rounds.csv")
     print(f"Wrote {len(experiments)} rows -> data/experiments.csv")
