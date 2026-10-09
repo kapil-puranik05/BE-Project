@@ -2,7 +2,7 @@
 FedLineage  —  Federated MLOps Observability Dashboard
 =======================================================
 Streamlit prototype  |  BE Final Year Project
-Pages: Overview, Client Health, Experiment Comparison
+Pages: Overview, Client Health, Experiment Comparison, Model Lineage
 Run:   streamlit run app.py
 """
 
@@ -10,6 +10,8 @@ import pathlib
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
+
+import lineage as lineage_mod
 
 # ── Constants ────────────────────────────────────────────────────────────────
 EXPERIMENT_ID  = "FL_EXP_001"
@@ -137,6 +139,9 @@ except FileNotFoundError as exc:
     st.error(f"Data file not found: `{exc.filename}`. Run `python simulation.py` first.")
     st.stop()
 
+LINEAGE_GRAPH = lineage_mod.build_lineage_graph(clients_df, rounds_df)
+LINEAGE_ANOMALY = lineage_mod.find_anomaly(clients_df, rounds_df)
+
 # ── Plotly helpers ────────────────────────────────────────────────────────────
 def base_layout(**kw):
     d = dict(
@@ -179,7 +184,7 @@ with st.sidebar:
     st.markdown("---")
     page = st.radio(
         "Navigation",
-        ["🏠  Overview", "💻  Client Health", "🧪  Experiment Comparison"],
+        ["🏠  Overview", "💻  Client Health", "🧪  Experiment Comparison", "🧬  Model Lineage"],
         label_visibility="collapsed",
         key="page",
     )
@@ -194,7 +199,7 @@ with st.sidebar:
             <span style="font-family:'JetBrains Mono',monospace;font-weight:500;">{v}</span></div>""", unsafe_allow_html=True)
     st.markdown("""<br><div style="font-size:.68rem;color:#4A5A80;line-height:1.5;">
         FedLineage tracks performance together with execution metadata — not accuracy alone.<br><br>
-        Model Lineage page coming soon.</div>""", unsafe_allow_html=True)
+        Model Lineage traces a version back to its contributing clients and round.</div>""", unsafe_allow_html=True)
 
 # ═════════════════════════════════════════════════════════════════════════════
 # PAGE 1 — OVERVIEW
@@ -492,3 +497,74 @@ elif page == "🧪  Experiment Comparison":
         communication cost, and straggler impact — providing a holistic view that pure
         accuracy metrics alone cannot capture.
     </div>""", unsafe_allow_html=True)
+
+# ═════════════════════════════════════════════════════════════════════════════
+# PAGE 4 — MODEL LINEAGE
+# ═════════════════════════════════════════════════════════════════════════════
+elif page == "🧬  Model Lineage":
+    st.markdown("""<h1 style="font-size:1.8rem;font-weight:700;margin-bottom:.1rem;letter-spacing:-.02em;color:#E2E8F0;">🧬 Model Lineage</h1>
+    <p style="color:#8B9DC3;font-size:.87rem;margin-top:0;">Client → Update → Round → Global Model · version tracing · simulated root-cause view</p>
+    <hr style="border-color:rgba(99,120,255,.15);margin:.8rem 0 1.2rem;">""", unsafe_allow_html=True)
+
+    available_rounds = sorted(rounds_df["round"].astype(int).unique().tolist())
+    default_round = LINEAGE_ANOMALY["round"] if LINEAGE_ANOMALY else available_rounds[-1]
+    selected_round = st.select_slider(
+        "Inspect global model version",
+        options=available_rounds,
+        value=default_round,
+        format_func=lambda r: f"Global Model V{r}  (Round {r})",
+        help="Each FL round produces a new global model version from participating client updates.",
+    )
+
+    rmeta = rounds_df.loc[rounds_df["round"] == selected_round].iloc[0]
+    k1, k2, k3, k4 = st.columns(4, gap="small")
+    k1.markdown(kpi_card("Model Version", f"V{selected_round}", "aggregated global model", ACCENT_TEAL), unsafe_allow_html=True)
+    k2.markdown(kpi_card("Global Accuracy", f"{rmeta['global_accuracy']:.1f}%", f"round {selected_round}", ACCENT_BLUE), unsafe_allow_html=True)
+    k3.markdown(kpi_card("Global Loss", f"{rmeta['global_loss']:.3f}", "after aggregation", ACCENT_AMBER), unsafe_allow_html=True)
+    k4.markdown(kpi_card("Contributing Clients", str(int(rmeta["participating_clients"])), "updates in this round", ACCENT_PURPLE), unsafe_allow_html=True)
+
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown(f'<div class="section-title">Lineage Graph — Global Model V{selected_round}</div>', unsafe_allow_html=True)
+    fig_lin = lineage_mod.lineage_figure(LINEAGE_GRAPH, selected_round)
+    st.plotly_chart(fig_lin, use_container_width=True)
+
+    st.markdown("""<div class="info-box">
+        Relationship shown: <strong>Client → Update → Round → Global Model</strong>.
+        Previous global versions also feed the next round. Selecting a version reconstructs
+        which client updates produced that model.
+    </div>""", unsafe_allow_html=True)
+
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown(f'<div class="section-title">Model V{selected_round} Investigation</div>', unsafe_allow_html=True)
+
+    round_clients = clients_df[clients_df["round"] == selected_round]
+    stragglers = round_clients[round_clients["status"] == "straggler"]
+
+    if not stragglers.empty:
+        sr = stragglers.iloc[0]
+        prev = rounds_df.loc[rounds_df["round"] == selected_round - 1]
+        acc_note = "Model accuracy decreased." if (not prev.empty and rmeta["global_accuracy"] < prev.iloc[0]["global_accuracy"]) else "Associated client telemetry is anomalous."
+        st.markdown(f"""<div class="alert-straggler">
+            <strong>Model V{selected_round} Investigation</strong><br>
+            {acc_note}<br><br>
+            <strong>Associated anomaly:</strong><br>
+            Client: <strong>{sr['client_id']}</strong><br>
+            Round: <strong>{selected_round}</strong><br>
+            CPU utilization: <strong>{sr['cpu_usage']}%</strong><br>
+            Memory utilization: <strong>{sr['memory_usage']}%</strong><br>
+            Network bandwidth: <strong>{sr['network_bandwidth']} MB/s</strong><br>
+            Training time: <strong>{sr['training_time']:.1f} sec</strong><br><br>
+            Status: <strong>Potential contributing straggler</strong>
+        </div>""", unsafe_allow_html=True)
+        st.markdown("""<div class="info-box">
+            Lineage allows the operator to trace the affected model version back to the
+            participating client and round. This is a <strong>simulated proof-of-concept</strong>;
+            the system flags a potential contributing straggler from telemetry, and does not
+            claim a causal algorithm.
+        </div>""", unsafe_allow_html=True)
+    else:
+        st.markdown(f"""<div class="info-box">
+            No straggler flag on <strong>Global Model V{selected_round}</strong>.
+            All contributing client updates in this round are marked healthy.
+            Select <strong>V{LINEAGE_ANOMALY['round'] if LINEAGE_ANOMALY else 7}</strong> to inspect the simulated anomaly path.
+        </div>""", unsafe_allow_html=True)

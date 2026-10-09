@@ -1,0 +1,1307 @@
+{
+  "models": [
+    {
+      "model": "Global_V1",
+      "round": 1,
+      "clients": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5"
+      ],
+      "global_accuracy": 72.3,
+      "global_loss": 0.81
+    },
+    {
+      "model": "Global_V2",
+      "round": 2,
+      "clients": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5"
+      ],
+      "global_accuracy": 75.1,
+      "global_loss": 0.72
+    },
+    {
+      "model": "Global_V3",
+      "round": 3,
+      "clients": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5"
+      ],
+      "global_accuracy": 77.8,
+      "global_loss": 0.65
+    },
+    {
+      "model": "Global_V4",
+      "round": 4,
+      "clients": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5"
+      ],
+      "global_accuracy": 79.9,
+      "global_loss": 0.61
+    },
+    {
+      "model": "Global_V5",
+      "round": 5,
+      "clients": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5"
+      ],
+      "global_accuracy": 82.1,
+      "global_loss": 0.56
+    },
+    {
+      "model": "Global_V6",
+      "round": 6,
+      "clients": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5"
+      ],
+      "global_accuracy": 83.4,
+      "global_loss": 0.53
+    },
+    {
+      "model": "Global_V7",
+      "round": 7,
+      "clients": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5"
+      ],
+      "global_accuracy": 80.8,
+      "global_loss": 0.62
+    },
+    {
+      "model": "Global_V8",
+      "round": 8,
+      "clients": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5"
+      ],
+      "global_accuracy": 84.0,
+      "global_loss": 0.51
+    },
+    {
+      "model": "Global_V9",
+      "round": 9,
+      "clients": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5"
+      ],
+      "global_accuracy": 85.2,
+      "global_loss": 0.47
+    },
+    {
+      "model": "Global_V10",
+      "round": 10,
+      "clients": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5"
+      ],
+      "global_accuracy": 86.4,
+      "global_loss": 0.44
+    }
+  ],
+  "nodes": [
+    {
+      "id": "Client_C1",
+      "kind": "client",
+      "label": "C1",
+      "client_id": "C1"
+    },
+    {
+      "id": "Client_C2",
+      "kind": "client",
+      "label": "C2",
+      "client_id": "C2"
+    },
+    {
+      "id": "Client_C3",
+      "kind": "client",
+      "label": "C3",
+      "client_id": "C3"
+    },
+    {
+      "id": "Client_C4",
+      "kind": "client",
+      "label": "C4",
+      "client_id": "C4"
+    },
+    {
+      "id": "Client_C5",
+      "kind": "client",
+      "label": "C5",
+      "client_id": "C5"
+    },
+    {
+      "id": "Round_1",
+      "kind": "round",
+      "label": "Round 1",
+      "round": 1
+    },
+    {
+      "id": "Global_Model_V1",
+      "kind": "global_model",
+      "label": "Global Model V1",
+      "round": 1,
+      "global_accuracy": 72.3
+    },
+    {
+      "id": "Update_C1_R1",
+      "kind": "update",
+      "label": "C1 Update",
+      "client_id": "C1",
+      "round": 1,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C2_R1",
+      "kind": "update",
+      "label": "C2 Update",
+      "client_id": "C2",
+      "round": 1,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C3_R1",
+      "kind": "update",
+      "label": "C3 Update",
+      "client_id": "C3",
+      "round": 1,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C4_R1",
+      "kind": "update",
+      "label": "C4 Update",
+      "client_id": "C4",
+      "round": 1,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C5_R1",
+      "kind": "update",
+      "label": "C5 Update",
+      "client_id": "C5",
+      "round": 1,
+      "status": "healthy"
+    },
+    {
+      "id": "Round_2",
+      "kind": "round",
+      "label": "Round 2",
+      "round": 2
+    },
+    {
+      "id": "Global_Model_V2",
+      "kind": "global_model",
+      "label": "Global Model V2",
+      "round": 2,
+      "global_accuracy": 75.1
+    },
+    {
+      "id": "Update_C1_R2",
+      "kind": "update",
+      "label": "C1 Update",
+      "client_id": "C1",
+      "round": 2,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C2_R2",
+      "kind": "update",
+      "label": "C2 Update",
+      "client_id": "C2",
+      "round": 2,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C3_R2",
+      "kind": "update",
+      "label": "C3 Update",
+      "client_id": "C3",
+      "round": 2,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C4_R2",
+      "kind": "update",
+      "label": "C4 Update",
+      "client_id": "C4",
+      "round": 2,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C5_R2",
+      "kind": "update",
+      "label": "C5 Update",
+      "client_id": "C5",
+      "round": 2,
+      "status": "healthy"
+    },
+    {
+      "id": "Round_3",
+      "kind": "round",
+      "label": "Round 3",
+      "round": 3
+    },
+    {
+      "id": "Global_Model_V3",
+      "kind": "global_model",
+      "label": "Global Model V3",
+      "round": 3,
+      "global_accuracy": 77.8
+    },
+    {
+      "id": "Update_C1_R3",
+      "kind": "update",
+      "label": "C1 Update",
+      "client_id": "C1",
+      "round": 3,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C2_R3",
+      "kind": "update",
+      "label": "C2 Update",
+      "client_id": "C2",
+      "round": 3,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C3_R3",
+      "kind": "update",
+      "label": "C3 Update",
+      "client_id": "C3",
+      "round": 3,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C4_R3",
+      "kind": "update",
+      "label": "C4 Update",
+      "client_id": "C4",
+      "round": 3,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C5_R3",
+      "kind": "update",
+      "label": "C5 Update",
+      "client_id": "C5",
+      "round": 3,
+      "status": "healthy"
+    },
+    {
+      "id": "Round_4",
+      "kind": "round",
+      "label": "Round 4",
+      "round": 4
+    },
+    {
+      "id": "Global_Model_V4",
+      "kind": "global_model",
+      "label": "Global Model V4",
+      "round": 4,
+      "global_accuracy": 79.9
+    },
+    {
+      "id": "Update_C1_R4",
+      "kind": "update",
+      "label": "C1 Update",
+      "client_id": "C1",
+      "round": 4,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C2_R4",
+      "kind": "update",
+      "label": "C2 Update",
+      "client_id": "C2",
+      "round": 4,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C3_R4",
+      "kind": "update",
+      "label": "C3 Update",
+      "client_id": "C3",
+      "round": 4,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C4_R4",
+      "kind": "update",
+      "label": "C4 Update",
+      "client_id": "C4",
+      "round": 4,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C5_R4",
+      "kind": "update",
+      "label": "C5 Update",
+      "client_id": "C5",
+      "round": 4,
+      "status": "healthy"
+    },
+    {
+      "id": "Round_5",
+      "kind": "round",
+      "label": "Round 5",
+      "round": 5
+    },
+    {
+      "id": "Global_Model_V5",
+      "kind": "global_model",
+      "label": "Global Model V5",
+      "round": 5,
+      "global_accuracy": 82.1
+    },
+    {
+      "id": "Update_C1_R5",
+      "kind": "update",
+      "label": "C1 Update",
+      "client_id": "C1",
+      "round": 5,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C2_R5",
+      "kind": "update",
+      "label": "C2 Update",
+      "client_id": "C2",
+      "round": 5,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C3_R5",
+      "kind": "update",
+      "label": "C3 Update",
+      "client_id": "C3",
+      "round": 5,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C4_R5",
+      "kind": "update",
+      "label": "C4 Update",
+      "client_id": "C4",
+      "round": 5,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C5_R5",
+      "kind": "update",
+      "label": "C5 Update",
+      "client_id": "C5",
+      "round": 5,
+      "status": "healthy"
+    },
+    {
+      "id": "Round_6",
+      "kind": "round",
+      "label": "Round 6",
+      "round": 6
+    },
+    {
+      "id": "Global_Model_V6",
+      "kind": "global_model",
+      "label": "Global Model V6",
+      "round": 6,
+      "global_accuracy": 83.4
+    },
+    {
+      "id": "Update_C1_R6",
+      "kind": "update",
+      "label": "C1 Update",
+      "client_id": "C1",
+      "round": 6,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C2_R6",
+      "kind": "update",
+      "label": "C2 Update",
+      "client_id": "C2",
+      "round": 6,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C3_R6",
+      "kind": "update",
+      "label": "C3 Update",
+      "client_id": "C3",
+      "round": 6,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C4_R6",
+      "kind": "update",
+      "label": "C4 Update",
+      "client_id": "C4",
+      "round": 6,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C5_R6",
+      "kind": "update",
+      "label": "C5 Update",
+      "client_id": "C5",
+      "round": 6,
+      "status": "healthy"
+    },
+    {
+      "id": "Round_7",
+      "kind": "round",
+      "label": "Round 7",
+      "round": 7
+    },
+    {
+      "id": "Global_Model_V7",
+      "kind": "global_model",
+      "label": "Global Model V7",
+      "round": 7,
+      "global_accuracy": 80.8
+    },
+    {
+      "id": "Update_C1_R7",
+      "kind": "update",
+      "label": "C1 Update",
+      "client_id": "C1",
+      "round": 7,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C2_R7",
+      "kind": "update",
+      "label": "C2 Update",
+      "client_id": "C2",
+      "round": 7,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C3_R7",
+      "kind": "update",
+      "label": "C3 Update",
+      "client_id": "C3",
+      "round": 7,
+      "status": "straggler"
+    },
+    {
+      "id": "Update_C4_R7",
+      "kind": "update",
+      "label": "C4 Update",
+      "client_id": "C4",
+      "round": 7,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C5_R7",
+      "kind": "update",
+      "label": "C5 Update",
+      "client_id": "C5",
+      "round": 7,
+      "status": "healthy"
+    },
+    {
+      "id": "Round_8",
+      "kind": "round",
+      "label": "Round 8",
+      "round": 8
+    },
+    {
+      "id": "Global_Model_V8",
+      "kind": "global_model",
+      "label": "Global Model V8",
+      "round": 8,
+      "global_accuracy": 84.0
+    },
+    {
+      "id": "Update_C1_R8",
+      "kind": "update",
+      "label": "C1 Update",
+      "client_id": "C1",
+      "round": 8,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C2_R8",
+      "kind": "update",
+      "label": "C2 Update",
+      "client_id": "C2",
+      "round": 8,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C3_R8",
+      "kind": "update",
+      "label": "C3 Update",
+      "client_id": "C3",
+      "round": 8,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C4_R8",
+      "kind": "update",
+      "label": "C4 Update",
+      "client_id": "C4",
+      "round": 8,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C5_R8",
+      "kind": "update",
+      "label": "C5 Update",
+      "client_id": "C5",
+      "round": 8,
+      "status": "healthy"
+    },
+    {
+      "id": "Round_9",
+      "kind": "round",
+      "label": "Round 9",
+      "round": 9
+    },
+    {
+      "id": "Global_Model_V9",
+      "kind": "global_model",
+      "label": "Global Model V9",
+      "round": 9,
+      "global_accuracy": 85.2
+    },
+    {
+      "id": "Update_C1_R9",
+      "kind": "update",
+      "label": "C1 Update",
+      "client_id": "C1",
+      "round": 9,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C2_R9",
+      "kind": "update",
+      "label": "C2 Update",
+      "client_id": "C2",
+      "round": 9,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C3_R9",
+      "kind": "update",
+      "label": "C3 Update",
+      "client_id": "C3",
+      "round": 9,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C4_R9",
+      "kind": "update",
+      "label": "C4 Update",
+      "client_id": "C4",
+      "round": 9,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C5_R9",
+      "kind": "update",
+      "label": "C5 Update",
+      "client_id": "C5",
+      "round": 9,
+      "status": "healthy"
+    },
+    {
+      "id": "Round_10",
+      "kind": "round",
+      "label": "Round 10",
+      "round": 10
+    },
+    {
+      "id": "Global_Model_V10",
+      "kind": "global_model",
+      "label": "Global Model V10",
+      "round": 10,
+      "global_accuracy": 86.4
+    },
+    {
+      "id": "Update_C1_R10",
+      "kind": "update",
+      "label": "C1 Update",
+      "client_id": "C1",
+      "round": 10,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C2_R10",
+      "kind": "update",
+      "label": "C2 Update",
+      "client_id": "C2",
+      "round": 10,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C3_R10",
+      "kind": "update",
+      "label": "C3 Update",
+      "client_id": "C3",
+      "round": 10,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C4_R10",
+      "kind": "update",
+      "label": "C4 Update",
+      "client_id": "C4",
+      "round": 10,
+      "status": "healthy"
+    },
+    {
+      "id": "Update_C5_R10",
+      "kind": "update",
+      "label": "C5 Update",
+      "client_id": "C5",
+      "round": 10,
+      "status": "healthy"
+    }
+  ],
+  "edges": [
+    {
+      "source": "Client_C1",
+      "target": "Update_C1_R1",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C1",
+      "target": "Update_C1_R2",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C1",
+      "target": "Update_C1_R3",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C1",
+      "target": "Update_C1_R4",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C1",
+      "target": "Update_C1_R5",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C1",
+      "target": "Update_C1_R6",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C1",
+      "target": "Update_C1_R7",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C1",
+      "target": "Update_C1_R8",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C1",
+      "target": "Update_C1_R9",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C1",
+      "target": "Update_C1_R10",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C2",
+      "target": "Update_C2_R1",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C2",
+      "target": "Update_C2_R2",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C2",
+      "target": "Update_C2_R3",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C2",
+      "target": "Update_C2_R4",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C2",
+      "target": "Update_C2_R5",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C2",
+      "target": "Update_C2_R6",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C2",
+      "target": "Update_C2_R7",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C2",
+      "target": "Update_C2_R8",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C2",
+      "target": "Update_C2_R9",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C2",
+      "target": "Update_C2_R10",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C3",
+      "target": "Update_C3_R1",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C3",
+      "target": "Update_C3_R2",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C3",
+      "target": "Update_C3_R3",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C3",
+      "target": "Update_C3_R4",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C3",
+      "target": "Update_C3_R5",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C3",
+      "target": "Update_C3_R6",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C3",
+      "target": "Update_C3_R7",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C3",
+      "target": "Update_C3_R8",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C3",
+      "target": "Update_C3_R9",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C3",
+      "target": "Update_C3_R10",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C4",
+      "target": "Update_C4_R1",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C4",
+      "target": "Update_C4_R2",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C4",
+      "target": "Update_C4_R3",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C4",
+      "target": "Update_C4_R4",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C4",
+      "target": "Update_C4_R5",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C4",
+      "target": "Update_C4_R6",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C4",
+      "target": "Update_C4_R7",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C4",
+      "target": "Update_C4_R8",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C4",
+      "target": "Update_C4_R9",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C4",
+      "target": "Update_C4_R10",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C5",
+      "target": "Update_C5_R1",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C5",
+      "target": "Update_C5_R2",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C5",
+      "target": "Update_C5_R3",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C5",
+      "target": "Update_C5_R4",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C5",
+      "target": "Update_C5_R5",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C5",
+      "target": "Update_C5_R6",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C5",
+      "target": "Update_C5_R7",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C5",
+      "target": "Update_C5_R8",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C5",
+      "target": "Update_C5_R9",
+      "relation": "trains"
+    },
+    {
+      "source": "Client_C5",
+      "target": "Update_C5_R10",
+      "relation": "trains"
+    },
+    {
+      "source": "Round_1",
+      "target": "Global_Model_V1",
+      "relation": "produces"
+    },
+    {
+      "source": "Global_Model_V1",
+      "target": "Round_2",
+      "relation": "continues"
+    },
+    {
+      "source": "Update_C1_R1",
+      "target": "Round_1",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C2_R1",
+      "target": "Round_1",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C3_R1",
+      "target": "Round_1",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C4_R1",
+      "target": "Round_1",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C5_R1",
+      "target": "Round_1",
+      "relation": "contributes"
+    },
+    {
+      "source": "Round_2",
+      "target": "Global_Model_V2",
+      "relation": "produces"
+    },
+    {
+      "source": "Global_Model_V2",
+      "target": "Round_3",
+      "relation": "continues"
+    },
+    {
+      "source": "Update_C1_R2",
+      "target": "Round_2",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C2_R2",
+      "target": "Round_2",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C3_R2",
+      "target": "Round_2",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C4_R2",
+      "target": "Round_2",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C5_R2",
+      "target": "Round_2",
+      "relation": "contributes"
+    },
+    {
+      "source": "Round_3",
+      "target": "Global_Model_V3",
+      "relation": "produces"
+    },
+    {
+      "source": "Global_Model_V3",
+      "target": "Round_4",
+      "relation": "continues"
+    },
+    {
+      "source": "Update_C1_R3",
+      "target": "Round_3",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C2_R3",
+      "target": "Round_3",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C3_R3",
+      "target": "Round_3",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C4_R3",
+      "target": "Round_3",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C5_R3",
+      "target": "Round_3",
+      "relation": "contributes"
+    },
+    {
+      "source": "Round_4",
+      "target": "Global_Model_V4",
+      "relation": "produces"
+    },
+    {
+      "source": "Global_Model_V4",
+      "target": "Round_5",
+      "relation": "continues"
+    },
+    {
+      "source": "Update_C1_R4",
+      "target": "Round_4",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C2_R4",
+      "target": "Round_4",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C3_R4",
+      "target": "Round_4",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C4_R4",
+      "target": "Round_4",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C5_R4",
+      "target": "Round_4",
+      "relation": "contributes"
+    },
+    {
+      "source": "Round_5",
+      "target": "Global_Model_V5",
+      "relation": "produces"
+    },
+    {
+      "source": "Global_Model_V5",
+      "target": "Round_6",
+      "relation": "continues"
+    },
+    {
+      "source": "Update_C1_R5",
+      "target": "Round_5",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C2_R5",
+      "target": "Round_5",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C3_R5",
+      "target": "Round_5",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C4_R5",
+      "target": "Round_5",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C5_R5",
+      "target": "Round_5",
+      "relation": "contributes"
+    },
+    {
+      "source": "Round_6",
+      "target": "Global_Model_V6",
+      "relation": "produces"
+    },
+    {
+      "source": "Global_Model_V6",
+      "target": "Round_7",
+      "relation": "continues"
+    },
+    {
+      "source": "Update_C1_R6",
+      "target": "Round_6",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C2_R6",
+      "target": "Round_6",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C3_R6",
+      "target": "Round_6",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C4_R6",
+      "target": "Round_6",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C5_R6",
+      "target": "Round_6",
+      "relation": "contributes"
+    },
+    {
+      "source": "Round_7",
+      "target": "Global_Model_V7",
+      "relation": "produces"
+    },
+    {
+      "source": "Global_Model_V7",
+      "target": "Round_8",
+      "relation": "continues"
+    },
+    {
+      "source": "Update_C1_R7",
+      "target": "Round_7",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C2_R7",
+      "target": "Round_7",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C3_R7",
+      "target": "Round_7",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C4_R7",
+      "target": "Round_7",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C5_R7",
+      "target": "Round_7",
+      "relation": "contributes"
+    },
+    {
+      "source": "Round_8",
+      "target": "Global_Model_V8",
+      "relation": "produces"
+    },
+    {
+      "source": "Global_Model_V8",
+      "target": "Round_9",
+      "relation": "continues"
+    },
+    {
+      "source": "Update_C1_R8",
+      "target": "Round_8",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C2_R8",
+      "target": "Round_8",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C3_R8",
+      "target": "Round_8",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C4_R8",
+      "target": "Round_8",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C5_R8",
+      "target": "Round_8",
+      "relation": "contributes"
+    },
+    {
+      "source": "Round_9",
+      "target": "Global_Model_V9",
+      "relation": "produces"
+    },
+    {
+      "source": "Global_Model_V9",
+      "target": "Round_10",
+      "relation": "continues"
+    },
+    {
+      "source": "Update_C1_R9",
+      "target": "Round_9",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C2_R9",
+      "target": "Round_9",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C3_R9",
+      "target": "Round_9",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C4_R9",
+      "target": "Round_9",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C5_R9",
+      "target": "Round_9",
+      "relation": "contributes"
+    },
+    {
+      "source": "Round_10",
+      "target": "Global_Model_V10",
+      "relation": "produces"
+    },
+    {
+      "source": "Update_C1_R10",
+      "target": "Round_10",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C2_R10",
+      "target": "Round_10",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C3_R10",
+      "target": "Round_10",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C4_R10",
+      "target": "Round_10",
+      "relation": "contributes"
+    },
+    {
+      "source": "Update_C5_R10",
+      "target": "Round_10",
+      "relation": "contributes"
+    }
+  ],
+  "anomaly": {
+    "client": "C3",
+    "round": 7,
+    "model": "Global_V7",
+    "cpu_usage": 93.5,
+    "memory_usage": 90.5,
+    "network_bandwidth": 1.6,
+    "training_time": 44.8,
+    "local_loss": 0.748,
+    "local_accuracy": 70.7,
+    "status": "Potential contributing straggler",
+    "global_accuracy": 80.8,
+    "previous_global_accuracy": 83.4
+  }
+}
